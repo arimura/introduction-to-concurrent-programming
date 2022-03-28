@@ -1,3 +1,5 @@
+mod semaphore;
+
 use semaphore::Semaphore;
 use std::sync::atomic::{AtomicUsize, Ordering};
 use std::sync::Arc;
@@ -18,8 +20,8 @@ fn main(){
             for _ in 0..NUM_LOOP {
                 s.wait();
 
-                unsafe {CNT.fetch_add(1, Ordering::Seq(st))};
-                let n = unsafe { CNT.load(Ordering::Seq(st))};
+                unsafe {CNT.fetch_add(1, Ordering::SeqCst)};
+                let n = unsafe { CNT.load(Ordering::SeqCst)};
                 println!("semaphore: i = {}, CNT = {}", i, n);
                 assert!((n as isize) <= SEM_NUM);
                 unsafe {CNT.fetch_sub(1, Ordering::SeqCst)};
