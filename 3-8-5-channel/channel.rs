@@ -1,4 +1,3 @@
-
 use crate::semaphore::Semaphore;
 use std::collections::LinkedList;
 use std::sync::{Arc, Condvar, Mutex};
