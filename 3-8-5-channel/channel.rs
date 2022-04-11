@@ -1,10 +1,9 @@
-mod semaphore;
 
 use crate::semaphore::Semaphore;
 use std::collections::LinkedList;
 use std::sync::{Arc, Condvar, Mutex};
 
-#[derive(clone)]
+#[derive(Clone)]
 pub struct Sender<T> {
     sem: Arc<Semaphore>,
     buf: Arc<Mutex<LinkedList<T>>>,

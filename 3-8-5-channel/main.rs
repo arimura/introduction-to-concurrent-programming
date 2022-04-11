@@ -1,3 +1,4 @@
+mod semaphore;
 mod channel;
 
 use channel::channel;
